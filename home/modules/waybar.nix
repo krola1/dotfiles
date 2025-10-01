@@ -34,9 +34,10 @@
 
         #clock
         clock = {
-          interval = 1;
+          interval = 60;
           format = "{:%H:%M}";
-          tooltip-format = "{:%A %d. %B %Y}";
+          format-alt = "{:%H:%M:%S}";
+          tooltip-format = "{:%A %d %B %Y}";
         };
 
         # volumecontrol
