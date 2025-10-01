@@ -1,0 +1,14 @@
+# nix / home-manager build artifacts
+result
+result-*
+
+# system caches
+.cache/
+.nix-profile/
+.local/
+
+# direnv
+.direnv/
+
+# secrets or tokens
+secrets/
