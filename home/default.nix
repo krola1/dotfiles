@@ -12,6 +12,7 @@
     ./modules/git.nix
     ./modules/nvim
     ./modules/hyprland
+    ./modules/waybar.nix
   ];
 
   # ------ Standardconfig-------____
@@ -27,8 +28,8 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  #-----------------------Waybar------------------------------------------
-  programs.waybar.enable = true;
+  #-----------------------Waybar------------------------------------------ disabled after enabeling in its own module, will clean thgis up in the future
+  #programs.waybar.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -18,6 +18,9 @@
     htop
     pavucontrol
     lm_sensors
-		tree
+    tree
+    blueman
+    wireplumber
+    wl-clipboard
   ];
 }
