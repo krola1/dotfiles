@@ -18,5 +18,6 @@
     htop
     pavucontrol
     lm_sensors
+		tree
   ];
 }
