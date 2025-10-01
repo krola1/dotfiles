@@ -1,3 +1,5 @@
+#Denne filen er stort sett AI generert, for å få en halvfungerende nvimconfig oppe å gå så jeg har et verktøy å jobbe med. Fungerer overaskende bra, men noe bugs i aerial + lualine
+# skalø splittes opp i mer oversiktlige moduler på sikt
 # ================================================
 # home/modules/nvim.nix
 # -----------------------------------------------
