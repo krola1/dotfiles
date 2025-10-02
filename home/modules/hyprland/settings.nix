@@ -92,7 +92,7 @@
       ########################################
       ## 🧭 Gestures
       ########################################
-      gestures.workspace_swipe = false;
+      #gestures.workspace_swipe = false;
 
       ########################################
       ## 🎮 Enhets-spesifikt eksempel
