@@ -1,35 +1,24 @@
-# home/modules/hyprland/settings.nix
-# ✅ Kompatibel med Hyprland ≥0.40 og Home Manager 25.05
+## fine for now, might have to split and source when i get to the design config
 {pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
-      ########################################
-      ## 💻 Variabler og programmer
-      ########################################
-      "$terminal" = "kitty";
+         "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$browser" = "firefox";
 
-      ########################################
-      ## 🌍 Environment
-      ########################################
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
       ];
 
-      ########################################
-      ## ⚙️ General
-      ########################################
-      general = {
+      ##  ----------General---------
+       general = {
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
-
-        # ✅ Ny syntaks for farger i Hyprland 0.4x
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
 
@@ -38,9 +27,7 @@
         layout = "dwindle";
       };
 
-      ########################################
-      ## 🪟 Dekorasjon
-      ########################################
+      ## ------------- Dekorasjon
       decoration = {
         rounding = 10;
         rounding_power = 2;
@@ -62,26 +49,21 @@
         };
       };
 
-      ########################################
-      ## 🧱 Layouts
-      ########################################
+      ## -----Layouts
       dwindle = {
         pseudotile = true;
         preserve_split = true;
       };
       master.new_status = "master";
 
-      ########################################
-      ## 🎨 Misc
-      ########################################
+      ## ---- Misc
       misc = {
         force_default_wallpaper = -1; # ingen default wallpaper
         disable_hyprland_logo = false;
       };
 
-      ########################################
-      ## ⌨️ Input
-      ########################################
+     
+      ## -----Input
       input = {
         kb_layout = "no";
         follow_mouse = 1;
@@ -89,22 +71,13 @@
         touchpad.natural_scroll = false;
       };
 
-      ########################################
-      ## 🧭 Gestures
-      ########################################
-      #gestures.workspace_swipe = false;
 
-      ########################################
-      ## 🎮 Enhets-spesifikt eksempel
-      ########################################
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
       };
 
-      ########################################
-      ## 🧱 Window-rules
-      ########################################
+      ## ----Window-rules
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
