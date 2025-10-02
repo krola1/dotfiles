@@ -4,7 +4,7 @@
     enable = true;
 
     settings = {
-         "$terminal" = "kitty";
+      "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$browser" = "firefox";
@@ -15,7 +15,7 @@
       ];
 
       ##  ----------General---------
-       general = {
+      general = {
         gaps_in = 5;
         gaps_out = 20;
         border_size = 2;
@@ -62,7 +62,6 @@
         disable_hyprland_logo = false;
       };
 
-     
       ## -----Input
       input = {
         kb_layout = "no";
@@ -70,7 +69,6 @@
         sensitivity = 0;
         touchpad.natural_scroll = false;
       };
-
 
       device = {
         name = "epic-mouse-v1";

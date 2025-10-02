@@ -10,9 +10,12 @@
   imports = [
     ./modules/packages.nix #modulariserte pakker
     ./modules/git.nix
+    ./modules/waybar.nix
+
     ./modules/nvim
     ./modules/hyprland
-    ./modules/waybar.nix
+    ./modules/kitty
+    ./modules/fish
   ];
 
   # ------ Standardconfig-------____

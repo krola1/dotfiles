@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: {
+  ###comented out packages are enabled in their own files
   home.packages = with pkgs; [
     file
     nodejs
@@ -11,9 +12,12 @@
     nodePackages.typescript
     nodePackages.typescript-language-server
     nixd
-    kitty
+    #kitty
     git
-    fish
+    #fish
+    #waybar
+    #hyprland
+    #nvim
     wofi
     killall
     htop
