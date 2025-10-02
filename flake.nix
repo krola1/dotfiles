@@ -17,8 +17,10 @@
       nixpkgs,
       home-manager,
       treefmt-nix,
+      nixvim,
+
       ...
-    }@inputs:
+    }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -44,7 +46,7 @@
         bandit = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home ];
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = { inherit nixvim; };
         };
       };
 

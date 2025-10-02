@@ -2,7 +2,7 @@
 {
   config,
   pkgs,
-  inputs,
+  nixvim,
   ...
 }:
 {
@@ -29,6 +29,6 @@
     blueman
     wireplumber
     wl-clipboard
-    inputs.nixvim.packages.${pkgs.system}.default
+    nixvim.packages.${pkgs.system}.default
   ];
 }
