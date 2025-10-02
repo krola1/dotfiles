@@ -5,7 +5,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-		file
+    file
     nodejs
     nodePackages.prettier
     nodePackages.typescript

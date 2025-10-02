@@ -15,4 +15,3 @@
   # Slink til .config
   home.file.".config/hypr/keybinds.conf".source = ./keybinds.conf;
 }
-
