@@ -3,11 +3,11 @@
   description = "Bandit-Flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # + treefmt-nix for `nix fmt` med alejandra
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
@@ -22,7 +22,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
-    # + tree-wrapper som kjører alejandra
+    # tree-wrapper som kjører alejandra
     tree = treefmt-nix.lib.mkWrapper pkgs {
       projectRootFile = "flake.nix";
       programs.alejandra.enable = true;
