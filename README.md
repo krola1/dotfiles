@@ -4,5 +4,4 @@ Simple waybar.
 
 Nvim config is vibecoded and will be fixed and modularized - but its good enough for so i kan keep building the system
 
-
 My first ever readme too!

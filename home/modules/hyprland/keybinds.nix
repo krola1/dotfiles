@@ -15,6 +15,4 @@
   # Slink til .config
   home.file.".config/hypr/keybinds.conf".source = ./keybinds.conf;
 }
-#bind = $mainMod SHIFT, 6, movetoworkspace, 6
-#bind = $mainMod SHIFT, 7, movetoworkspace, 7
 
