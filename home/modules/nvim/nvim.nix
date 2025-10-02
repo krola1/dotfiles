@@ -198,7 +198,7 @@
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- Lua
-      require("lspconfig").lua_ls.setup({ capabilities = capabilities })
+      vim.lsp.config.lua_ls.setup({ capabilities = capabilities })
 
       -- TypeScript / JavaScript
       local function ts_organize_imports(bufnr)
@@ -210,7 +210,7 @@
         pcall(vim.lsp.buf.execute_command, params)
       end
 
-      require("lspconfig").ts_ls.setup({
+      vim.lsp.config.ts_ls.setup({
         capabilities = capabilities,
         settings = {
           typescript = { format = { enable = false } },
@@ -230,7 +230,7 @@
       })
 
       -- Nix
-      require("lspconfig").nixd.setup({
+      vim.lsp.config.nixd.setup({
         capabilities = capabilities,
         on_attach = function(_, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
