@@ -1,6 +1,8 @@
-
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   fishPath = "${pkgs.fish}/bin/fish";
   kittyKeymaps = [
     "ctrl+shift+enter new_window"
@@ -30,4 +32,3 @@ in {
     extraConfig = lib.concatStringsSep "\n" (map (m: "map ${m}") kittyKeymaps);
   };
 }
-

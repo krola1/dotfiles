@@ -2,8 +2,10 @@
 {
   config,
   pkgs,
+  inputs,
   ...
-}: {
+}:
+{
   ###comented out packages are enabled in their own files
   home.packages = with pkgs; [
     file
@@ -27,5 +29,6 @@
     blueman
     wireplumber
     wl-clipboard
+    inputs.nixvim.packages.${pkgs.system}.default
   ];
 }

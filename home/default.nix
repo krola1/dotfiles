@@ -4,15 +4,16 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   #her er importsetningen som lar meg ha moduler.
 
   imports = [
-    ./modules/packages.nix #modulariserte pakker
+    ./modules/packages.nix # modulariserte pakker
     ./modules/git.nix
     ./modules/waybar.nix
 
-    ./modules/nvim
+    #./modules/nvim
     ./modules/hyprland
     ./modules/kitty
     ./modules/fish
