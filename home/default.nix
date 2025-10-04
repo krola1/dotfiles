@@ -7,6 +7,9 @@
 }:
 {
   #her er importsetningen som lar meg ha moduler.
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   imports = [
     ./modules/packages.nix # modulariserte pakker
