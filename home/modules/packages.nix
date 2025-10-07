@@ -22,6 +22,8 @@
     #-----ui--------
     #hyprland
     #waybar
+    hyprcursor
+    bibata-cursors
     wireplumber
     blueman
     pavucontrol

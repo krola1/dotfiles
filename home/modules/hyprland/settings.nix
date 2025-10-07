@@ -1,5 +1,6 @@
 ## fine for now, might have to split and source when i get to the design config
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -10,8 +11,10 @@
       "$browser" = "firefox";
 
       env = [
-        "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
+        "HYPRCURSOR_THEME, Bibata-Modern-Ice"
+        "XCURSOR_SIZE,24"
+        "XCURSOR_THEME, Bibata-Modern-Ice"
       ];
 
       ##  ----------General---------
