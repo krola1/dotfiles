@@ -20,6 +20,11 @@
           "tray"
         ];
 
+        tray = {
+          icon-size = 20;
+          spacing = 8;
+        };
+
         # workspace viewer
         "hyprland/workspaces" = {
           all-outputs = true;

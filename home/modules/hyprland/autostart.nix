@@ -3,9 +3,9 @@
 {
   wayland.windowManager.hyprland.settings."exec-once" = [
     "waybar"
-    "nm-applet"
+    "pasystray"
     "blueman-applet"
     "protonvpn-app"
-    "pasystray"
+    "nm-applet"
   ];
 }

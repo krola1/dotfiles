@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -20,7 +21,9 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
-
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
