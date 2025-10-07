@@ -4,7 +4,8 @@
   pkgs,
   nixvim,
   ...
-}: {
+}:
+{
   ###comented out packages are enabled in their own files
   home.packages = with pkgs; [
     #------------system-------------
@@ -24,8 +25,10 @@
     wireplumber
     blueman
     pavucontrol
+    pasystray
     file
     wofi
+    networkmanagerapplet
     ##------------programing, ie langueagepacks, compilers etc
     rustc
     cargo

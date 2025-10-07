@@ -1,5 +1,6 @@
 # home/modules/waybar.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.waybar = {
     enable = true;
     # sizer and position
@@ -13,9 +14,11 @@
         margin-right = 6;
 
         # Sections
-        modules-left = ["hyprland/workspaces"];
-        modules-center = ["clock"];
-        modules-right = ["pulseaudio" "bluetooth"];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ "clock" ];
+        modules-right = [
+          "tray"
+        ];
 
         # workspace viewer
         "hyprland/workspaces" = {
@@ -40,29 +43,6 @@
           tooltip-format = "{:%A %d %B %Y}";
         };
 
-        # volumecontrol
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "󰝟 mute";
-          format-icons = {default = ["" "" ""];};
-          scroll-step = 1;
-
-          on-click = "pavucontrol"; # åpne lydmikser
-          on-scroll-up = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+";
-          on-scroll-down = "wpctl set-volume      @DEFAULT_AUDIO_SINK@ 1%-";
-
-          tooltip = true;
-        };
-
-        # bluetooth
-        bluetooth = {
-          format = "";
-          format-connected = " {num_connections}";
-          format-disabled = " off";
-          format-off = " off";
-          tooltip-format = "{controller_alias} {controller_address}\n{status}";
-          on-click = "blueman-manager"; # enkel GUI for BT
-        };
       };
     };
 
@@ -78,9 +58,6 @@
 
       #clock { padding: 0 10px; color: #cdd6f4; }
 
-      #pulseaudio, #bluetooth { padding: 0 10px; margin-left: 6px; color: #1e1e2e; border-radius: 8px; }
-      #pulseaudio { background: #f5e0dc; }   /* rosa */
-      #bluetooth  { background: #b4befe; }   /* lilla */
     '';
   };
 }
