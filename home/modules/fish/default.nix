@@ -15,6 +15,7 @@
       dot = "cd /home/bandit/.dotfiles";
       ls = "lsd -a";
       lt = "lsd --tree --ignore-glob='.git|node_modules'";
+      mkdir = "mkdir -p";
 
     };
     shellAliases = {

@@ -48,7 +48,7 @@
     nodePackages.typescript
     nodePackages.typescript-language-server
     nixd
-
+    vscode
     ##---------------other programs, music, etc
     vlc
     qbittorrent
