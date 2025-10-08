@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.fish = {
     enable = true;
     shellAbbrs = {
@@ -6,7 +7,10 @@
       ga = "git add .";
       gc = "git commit -m";
       gp = "git push";
-      hm = "home-manager switch --flake .#bandit";
+      ns = "sudo nixos-rebuild switch --flake . --show-trace";
+      hm = "home-manager switch --flake . --show-trace";
+      dot = "cd /home/bandit/.dotfiles";
+
     };
     interactiveShellInit = ''
       set -gx EDITOR nvim

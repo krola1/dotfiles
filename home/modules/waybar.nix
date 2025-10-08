@@ -30,7 +30,7 @@
         };
 
         battery = {
-          source = "sysfs";
+          source = "upower";
           format = "{capacity}% 🔋";
           format-charging = "{capacity}% ⚡";
           format-plugged = "{capacity}% 🔌";
