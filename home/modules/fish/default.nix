@@ -7,10 +7,14 @@
       ga = "git add .";
       gc = "git commit -m";
       gp = "git push";
-      ns = "sudo nixos-rebuild switch --flake . --show-trace";
+      sm = "sudo nixos-rebuild switch --flake . --show-trace";
       hm = "home-manager switch --flake . --show-trace";
       dot = "cd /home/bandit/.dotfiles";
+      ls = "lsd -a";
 
+    };
+    shellAliases = {
+      cd = "z";
     };
     interactiveShellInit = ''
       set -gx EDITOR nvim
@@ -31,8 +35,4 @@
       '';
     };
   };
-  home.packages = with pkgs; [
-    fzf
-    ripgrep
-  ];
 }

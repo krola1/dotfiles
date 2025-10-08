@@ -13,6 +13,12 @@
     #kitty
     #fish
     nixvim.packages.${pkgs.system}.default # instead of neovim
+    eza
+    lsd
+    fzf
+    fd
+    ripgrep
+    bat
     wl-clipboard
     killall
     htop
@@ -53,4 +59,10 @@
     steam
     protonvpn-gui
   ];
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+
+  };
 }
