@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   #sources the file
   wayland.windowManager.hyprland.extraConfig = lib.mkAfter "
 		source = ~/.config/hypr/animations.conf

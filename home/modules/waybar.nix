@@ -15,14 +15,27 @@
 
         # Sections
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
+        modules-center = [
+          "clock"
+        ];
         modules-right = [
           "tray"
+          "battery"
+
         ];
 
         tray = {
           icon-size = 20;
           spacing = 8;
+        };
+
+        battery = {
+          source = "sysfs";
+          format = "{capacity}% 🔋";
+          format-charging = "{capacity}% ⚡";
+          format-plugged = "{capacity}% 🔌";
+          interval = 2;
+
         };
 
         # workspace viewer
@@ -42,10 +55,9 @@
 
         #clock
         clock = {
-          interval = 60;
-          format = "{:%H:%M}";
-          format-alt = "{:%H:%M:%S}";
-          tooltip-format = "{:%A %d %B %Y}";
+
+          format = "{:%H:%M:%S  %a %d %b %Y}";
+          interval = 1;
         };
 
       };
@@ -62,6 +74,7 @@
       #workspaces button.urgent  { color: #f38ba8; }
 
       #clock { padding: 0 10px; color: #cdd6f4; }
+      #battery { padding: 0 10px; color: #cdd6f4; }
 
     '';
   };

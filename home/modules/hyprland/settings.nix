@@ -15,6 +15,10 @@
         "HYPRCURSOR_THEME, Bibata-Modern-Ice"
         "XCURSOR_SIZE,24"
         "XCURSOR_THEME, Bibata-Modern-Ice"
+        "GTK_CSD,0"
+        "MOZ_ENABLE_WAYLAND,1"
+        "MOZ_DISABLE_CSD,1"
+
       ];
 
       ##  ----------General---------
@@ -83,6 +87,7 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
+
     };
   };
 }

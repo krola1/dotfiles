@@ -4,7 +4,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   #her er importsetningen som lar meg ha moduler.
   nixpkgs.config = {
     allowUnfree = true;

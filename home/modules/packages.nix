@@ -19,9 +19,11 @@
     tree
     git
     lm_sensors
+    #upower
     #-----ui--------
     #hyprland
     #waybar
+    nwg-look
     hyprcursor
     bibata-cursors
     wireplumber
