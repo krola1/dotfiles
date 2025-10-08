@@ -10,14 +10,16 @@
       ga = "git add .";
       gc = "git commit -m";
       gp = "git push";
-      sm = "sudo nixos-rebuild switch --flake . --show-trace";
-      hm = "home-manager switch --flake . --show-trace";
+      sm = "cd ~/.dotfiles; and sudo nixos-rebuild switch --flake . --show-trace";
+      hm = "cd ~/.dotfiles; and home-manager switch --flake . --show-trace";
       dot = "cd /home/bandit/.dotfiles";
       ls = "lsd -a";
+      lt = "lsd --tree --ignore-glob='.git|node_modules'";
 
     };
     shellAliases = {
       cd = "z";
+      cls = "clear";
     };
     interactiveShellInit = ''
       set -gx EDITOR nvim
