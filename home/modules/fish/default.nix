@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./fzf_config.nix
+  ];
   programs.fish = {
     enable = true;
     shellAbbrs = {
