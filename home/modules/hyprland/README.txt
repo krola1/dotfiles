@@ -1,3 +1,3 @@
-Because of the structure of hyprland config there is no Hyprland_config.nix for now there is only <name>_<function>.nix
+Incomplete splitting of modules for now, there is named nix files and the settings nix file, all settings that are not placed in their own module is withing hyprland_settings.nix.
 
-there is also a folder calnd conf that contains configuration files that are witten in the hyprland syntax, as there are some things that are easier in conf than in nix.
+some things are easier to config in hyprland syntax than in nix, those are placed in the config folder.

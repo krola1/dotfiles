@@ -1,5 +1,8 @@
-{ pkgs, nixvim, ... }:
 {
+  pkgs,
+  nixvim,
+  ...
+}: {
   home.packages = with pkgs; [
     nixvim.packages.${pkgs.system}.default # instead of neovim
     eza
@@ -12,7 +15,6 @@
     htop
     tree
     file
-
   ];
   programs.zoxide = {
     enable = true;

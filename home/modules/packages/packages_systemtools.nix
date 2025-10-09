@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     git
     lm_sensors
@@ -12,6 +11,5 @@
     bibata-cursors
     wofi
     wl-clipboard
-
   ];
 }

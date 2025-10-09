@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./hyprland_animations.nix
     ./hyprland_keybinds.nix
