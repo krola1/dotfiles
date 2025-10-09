@@ -1,5 +1,6 @@
 ## fine for now, might have to split and source when i get to the design config
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -22,7 +23,7 @@
       ##  ----------General---------
       general = {
         gaps_in = 5;
-        gaps_out = 20;
+        gaps_out = 7;
         border_size = 1;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
