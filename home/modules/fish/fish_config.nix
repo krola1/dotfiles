@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./fish_abbrv_fzf.nix
   ];
@@ -13,12 +14,13 @@
       hm = "cd ~/.dotfiles; and home-manager switch --flake . --show-trace";
       dot = "cd /home/bandit/.dotfiles";
       ls = "lsd -a";
-      lt = "lsd --tree --ignore-glob='.git|node_modules'";
+      lt = "lsd -X -r --tree --ignore-glob='.git|node_modules'";
       mkdir = "mkdir -p";
     };
     shellAliases = {
       cd = "z";
       cls = "clear";
+      cat = "bat";
     };
     interactiveShellInit = ''
       set -gx EDITOR nvim
