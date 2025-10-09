@@ -4,8 +4,7 @@
   pkgs,
   nixvim,
   ...
-}:
-{
+}: {
   ###comented out packages are enabled in their own files
   home.packages = with pkgs; [
     #------------system-------------
@@ -63,6 +62,5 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
-
   };
 }

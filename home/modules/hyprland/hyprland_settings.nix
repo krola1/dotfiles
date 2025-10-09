@@ -1,6 +1,5 @@
 ## fine for now, might have to split and source when i get to the design config
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -18,7 +17,6 @@
         "GTK_CSD,0"
         "MOZ_ENABLE_WAYLAND,1"
         "MOZ_DISABLE_CSD,1"
-
       ];
 
       ##  ----------General---------
@@ -87,7 +85,6 @@
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
-
     };
   };
 }

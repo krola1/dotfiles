@@ -12,9 +12,9 @@
   };
 
   imports = [
-    ./modules/packages.nix # modulariserte pakker
-    ./modules/git.nix
-    ./modules/waybar.nix
+    ./modules/packages # modulariserte pakker
+    ./modules/git
+    ./modules/waybar
 
     #./modules/nvim
     ./modules/hyprland
