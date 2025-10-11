@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -129,7 +130,7 @@
   ];
 
   # Install firefox.
-  programs.firefox.enable = true;
+  #  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

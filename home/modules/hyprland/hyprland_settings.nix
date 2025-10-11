@@ -8,7 +8,7 @@
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
-      "$browser" = "firefox";
+      "$browser" = "brave";
 
       env = [
         "HYPRCURSOR_SIZE,24"
