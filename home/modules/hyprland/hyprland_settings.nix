@@ -9,7 +9,9 @@
       "$fileManager" = "dolphin";
       "$menu" = "wofi --show drun";
       "$browser" = "brave";
-
+      xwayland = {
+        force_zero_scaling = true;
+      };
       env = [
         "HYPRCURSOR_SIZE,24"
         "HYPRCURSOR_THEME, Bibata-Modern-Ice"

@@ -49,6 +49,7 @@
   #---------------------hyprland----------------------------------------
 
   programs.hyprland.enable = true;
+  programs.niri.enable = true;
 
   services.greetd = {
     enable = true;

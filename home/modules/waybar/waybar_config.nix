@@ -1,6 +1,5 @@
 # home/modules/waybar.nix
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
     # sizer and position
@@ -14,7 +13,7 @@
         margin-right = 6;
 
         # Sections
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = ["hyprland/workspaces"];
         modules-center = [
           "clock"
         ];
@@ -61,12 +60,12 @@
 
     #styling
     style = ''
-      * { 
+      * {
       font-family: "JetBrainsMono Nerd Font", monospace;
-      font-size: 13px; 
+      font-size: 13px;
       }
 
-      window#waybar { 
+      window#waybar {
       background: #1E1E2E;
       border: solid 1px #1f7a99;
       border-radius:10px;
@@ -83,7 +82,7 @@
       }
 
       #workspaces button.active  {
-      color: #89b4fa; 
+      color: #89b4fa;
       }
 
       #workspaces button.urgent  {

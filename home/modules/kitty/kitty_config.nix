@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   fishPath = "${pkgs.fish}/bin/fish";
   kittyKeymaps = [
     "ctrl+shift+enter new_window"
@@ -11,8 +10,7 @@ let
     "ctrl+shift+h previous_tab"
     "ctrl+shift+l next_tab"
   ];
-in
-{
+in {
   programs.kitty = {
     enable = true;
     settings = {
