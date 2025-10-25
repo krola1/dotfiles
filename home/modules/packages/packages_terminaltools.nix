@@ -1,6 +1,5 @@
 {
   pkgs,
-  nixvim,
   ...
 }:
 {
@@ -12,7 +11,9 @@
     })
   ];
   home.packages = with pkgs; [
-    nixvim.packages.${pkgs.system}.default # instead of neovim
+    python3Packages.argcomplete
+    libinput
+    gcalcli
     eza
     lsd
     fzf
@@ -27,6 +28,7 @@
     unrar
     fswatch
     taskwarrior
+    yazi
   ];
   programs.zoxide = {
     enable = true;

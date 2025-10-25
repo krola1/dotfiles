@@ -1,5 +1,6 @@
 # home/modules/waybar.nix
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.waybar = {
     enable = true;
     # sizer and position
@@ -13,7 +14,9 @@
         margin-right = 6;
 
         # Sections
-        modules-left = ["hyprland/workspaces"];
+        modules-left = [
+          "hyprland/workspaces"
+        ];
         modules-center = [
           "clock"
         ];

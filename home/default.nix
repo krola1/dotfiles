@@ -4,8 +4,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   #her er importsetningen som lar meg ha moduler.
   nixpkgs.config = {
     allowUnfree = true;
@@ -16,8 +15,7 @@
     ./modules/git
     ./modules/waybar
     ./modules/niri
-
-    #./modules/nvim
+    ./modules/nixvim
     ./modules/hyprland
     ./modules/kitty
     ./modules/fish

@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   fishPath = "${pkgs.fish}/bin/fish";
   kittyKeymaps = [
     "ctrl+shift+enter new_window"
@@ -10,7 +11,8 @@
     "ctrl+shift+h previous_tab"
     "ctrl+shift+l next_tab"
   ];
-in {
+in
+{
   programs.kitty = {
     enable = true;
     settings = {
@@ -26,8 +28,10 @@ in {
       enable_audio_bell = "no";
       confirm_os_window_close = 0;
       background_opacity = "0.95";
-      window_padding_width = 8;
+      window_padding_width = 0;
       scrollback_lines = 5000;
+      allow_remote_control = "yes";
+      listen_on = "unix:@kitty";
     };
     extraConfig = lib.concatStringsSep "\n" (map (m: "map ${m}") kittyKeymaps);
   };

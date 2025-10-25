@@ -1,7 +1,15 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./fish_abbrv_fzf.nix
+    ./fish_functions.nix
   ];
+
+  home.sessionPath = [ "${config.home.homeDirectory}/.dotfiles/bin" ];
   programs.fish = {
     enable = true;
     shellAbbrs = {
@@ -15,6 +23,8 @@
       ls = "lsd -a";
       lt = "lsd -X -r --tree --ignore-glob='.git|node_modules'";
       mkdir = "mkdir -p";
+      grep = "grep -i";
+      calendar = "gcalcli calw";
     };
     shellAliases = {
       cd = "z";
@@ -25,7 +35,8 @@
       set -gx EDITOR nvim
       set -gx VISUAL nvim
       set -gx MANPAGER "nvim +Man!"
-      set -g fish_greeting ""
+      set -g fish_greeting
+
     '';
     functions = {
       cdl = ''

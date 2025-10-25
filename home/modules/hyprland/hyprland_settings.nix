@@ -1,6 +1,5 @@
 ## fine for now, might have to split and source when i get to the design config
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
 

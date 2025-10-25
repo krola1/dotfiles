@@ -1,6 +1,5 @@
 # This is my attempt for å combinations system, .nix loops through repeatable binds, config file for the remainder
-{ lib, ... }:
-{
+{lib, ...}: {
   #sources file,
   wayland.windowManager.hyprland.extraConfig = lib.mkAfter ''
     source = ~/.config/hypr/keybinds.conf
@@ -10,7 +9,7 @@
   #sets binds as nix code
   wayland.windowManager.hyprland.settings.bind =
     # commands can be passed as array if "strightforward"
-    [ "SUPER, RETURN, exec, kitty" ]
+    ["SUPER, RETURN, exec, kitty"]
     # map creates moves to workspace another displays it. pas through keys 1-10
     ++ map (n: "SUPER, ${toString n}, workspace, ${toString n}") (lib.range 1 9)
     ++ map (m: "SUPER ALT, ${toString m}, movetoworkspace, ${toString m}") (lib.range 1 9);

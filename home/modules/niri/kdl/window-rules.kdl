@@ -1,3 +1,8 @@
+
+window-rule {
+    geometry-corner-radius 3
+    clip-to-geometry true
+}
 window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
@@ -13,4 +18,8 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
     // block-out-from "screencast"
+}
+window-rule{
+  match app-id="discord"
+  open-on-workspace "discord"
 }

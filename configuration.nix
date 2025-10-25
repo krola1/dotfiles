@@ -14,8 +14,14 @@
   #allows free packages
 
   nixpkgs.config.allowUnfree = true;
-
-  # Bootloader.
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
+  # hardware.graphics = {
+  #   enable = true;
+  #   enable32Bit = true;
+  # };  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -46,16 +52,17 @@
   #services.displayManager.sddm.enable = true;
   #services.desktopManager.plasma6.enable = true;
 
-  #---------------------hyprland----------------------------------------
-
+  #---------------------displamanager----------------------------------------
   programs.hyprland.enable = true;
   programs.niri.enable = true;
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd 'niri'";
         user = "greeter";
       };
     };
@@ -78,9 +85,11 @@
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
   ];
+  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-wlr ];
 
   #bluetooth -- bruker satt opp.
   hardware.bluetooth.enable = true;
@@ -136,6 +145,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    xwayland-satellite
+
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];

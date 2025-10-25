@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   sep = "\n\n// ----\n\n";
   kdlParts = [
     (builtins.readFile ./kdl/input.kdl)
@@ -19,8 +17,7 @@ let
     (builtins.readFile ./kdl/binds.kdl)
   ];
   combined = builtins.concatStringsSep sep kdlParts;
-in
-{
+in {
   # Velg én av disse to (begge virker):
 
   # 1) XDG-vennlig (anbefalt):

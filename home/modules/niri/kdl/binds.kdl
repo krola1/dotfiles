@@ -1,4 +1,6 @@
 
+
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -14,18 +16,20 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    Mod+Z {spawn-sh "makoctl dismiss -a";}
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-   // Mod+W hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    //Mod+W hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }//
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+W hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
 
     Mod+A hotkey-overlay-title="Run an Application: Wofi" { spawn-sh "wofi --show drun"; }
-    Mod+B hotkey-overlay-title="Run an Application: Brave" { spawn "brave"; }
-    //Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+B hotkey-overlay-title="Run an Application: Firefox" { spawn "firefox"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    //Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -44,57 +48,55 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+H repeat=false { toggle-overview; }
+    Mod+Space repeat=false { toggle-overview; }
+  Mod+P { spawn-sh "grim -g \"$(slurp)\" - | wl-copy"; }
 
     Mod+Q repeat=false { close-window; }
-
+   Alt+Tab {focus-window-previous;}
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    //Mod+H     { focus-column-left; }
-    //Mod+J     { focus-window-down; }
-    //Mod+K     { focus-window-up; }
-    //Mod+L     { focus-column-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+  Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-or-monitor-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
 
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+H     { move-column-left-or-to-monitor-left; }
+     Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+
+     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L     { move-column-right-or-to-monitor-right; }
 
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
+    Mod+Shift+Tab {focus-monitor-next;}
 
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
     Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+  
+    Mod+Shift+H     { set-column-width "-10%"; }
+    Mod+Shift+J     { set-window-height "+10%"; }
+    Mod+Shift+K     { set-window-height "-10%"; }
+    Mod+Shift+L     { set-column-width "+10%"; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-workspace-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-workspace-down;}
+    Mod+Shift+Ctrl+K     { move-workspace-up; }
+    Mod+Shift+Ctrl+L     { move-workspace-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -103,7 +105,7 @@ binds {
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
-
+    Mod+D {focus-workspace "discord";}
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
@@ -149,7 +151,7 @@ binds {
     // Touchpad scrolling is continuous, so for these binds it is split into
     // discrete intervals.
     // These binds are also affected by touchpad's natural-scroll, so these
-    // example binds are "inverted", since we have natural-scroll enabled for
+    // example binds are "inverted", since we have natural-scroll /enabled for
     // touchpads by default.
     // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
     // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
@@ -159,8 +161,10 @@ binds {
     // "best effort". Trying to refer to a workspace index bigger than
     // the current workspace count will instead refer to the bottommost
     // (empty) workspace.
+
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+
     // will all refer to the 3rd workspace.
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -185,7 +189,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    // Mod+Tab { focus-workspace-previous; }
+     Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -193,7 +197,7 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    // Consume one window from the right to the bottom of the focused column.
+    // Consume one window from the right to the bottom of the f/moocused column.
     Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
@@ -224,11 +228,11 @@ binds {
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
     Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Plus { set-column-width "+10%"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Plus { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
@@ -267,5 +271,5 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    // Mod+Shift+P { toggle_window_pseudo; }
 }

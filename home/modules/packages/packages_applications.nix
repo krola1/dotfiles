@@ -1,13 +1,16 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     vlc
     qbittorrent
+    steam
     ffmpeg
     spotify
     discord
     obs-studio
-    steam
     brave
     protonvpn-gui
+    firefox
   ];
+
 }
