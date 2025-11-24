@@ -1,0 +1,120 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 15px;
+    min-height: 1px;
+    padding-right:4px;
+    padding-left:7px;
+}
+
+@import "theme.css";
+
+window#waybar {
+    background: @bar-bg;
+}
+
+tooltip {
+    background: @main-bg;
+    color: @main-fg;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+
+
+
+
+
+#tray menu * {
+    min-height: 7px
+}
+
+#tray menu separator {
+    min-height: 7px
+}
+#temperature,
+#backlight,
+#battery,
+#bluetooth,
+#custom-cava,
+#custom-cliphist,
+#clock,
+#custom-cpuinfo,
+#cpu,
+#custom-github_hyprdots,
+#custom-gpuinfo,
+#idle_inhibitor,
+#custom-keybindhint,
+#language,
+#memory,
+#mpris,
+#network,
+#custom-notifications,
+#custom-power,
+#privacy,
+#pulseaudio,
+#custom-spotify,
+#taskbar,
+#custom-theme,
+#tray,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+    color: @main-fg;
+   /* background: @main-bg;*/
+    opacity: 1;
+    margin: 5px 0px 5px 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#workspaces,
+#taskbar {
+    padding: 0px;
+}
+
+#custom-r_end {
+    border-radius: 0px 28px 28px 0px;
+    margin-right: 12px;
+    padding-right: 4px;
+}
+
+#custom-l_end {
+    border-radius: 28px 0px 0px 28px;
+    margin-left: 12px;
+    padding-left: 4px;
+}
+
+#custom-sr_end {
+    border-radius: 0px;
+    margin-right: 12px;
+    padding-right: 4px;
+}
+
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 12px;
+    padding-left: 4px;
+}
+
+#custom-rr_end {
+    border-radius: 0px 10px 10px 0px;
+    margin-right: 12px;
+    padding-right: 4px;
+}
+
+#custom-rl_end {
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 12px;
+    padding-left: 4px;
+}
