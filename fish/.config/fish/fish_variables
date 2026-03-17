@@ -1,0 +1,6 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export PNPM_HOME:/home/bandit/\x2elocal/share/pnpm
+SETUVAR --export SSH_AUTH_SOCK:\x1d
+SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/home/bandit/\x2elocal/bin\x1e/home/bandit/\x2elocal/share/pnpm

@@ -18,6 +18,7 @@
         "clock",
     ],
     "modules-right": [
+        "custom/cliphist",
         "mpd",
         "idle_inhibitor",
         "pulseaudio",
@@ -100,8 +101,9 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-    "clock": { 
-        "format": "{:%H:%M  %d-%m-%y}",
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M:%S  %d-%m-%y}",
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
@@ -182,6 +184,11 @@
             "default": ["", "", ""]
         },
         "on-click": "GDK_BACKEND=wayland GTK_THEME=Adwaita:dark pavucontrol"
+    },
+    "custom/cliphist": {
+        "format": "󰅍",
+        "tooltip": false,
+        "on-click": "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
     },
     "custom/media": {
         "format": "{icon} {text}",
