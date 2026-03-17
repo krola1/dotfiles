@@ -1,0 +1,17 @@
+[Unit]
+Description=MoltenGamepad Event Translator
+
+[Service]
+User=gamepad
+Group=gamepad
+Type=forking
+PIDFile=/run/moltengamepad/pid
+ExecStart=/usr/local/bin/moltengamepad \
+ --daemon --pidfile /run/moltengamepad/pid \
+ --config-path /etc/xdg/moltengamepad
+ExecStop=/usr/bin/kill $MAINPID
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=default.target
