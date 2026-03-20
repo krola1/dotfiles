@@ -6,12 +6,12 @@ edge bottom
 lines 20
 columns 120
 # Marginer
+margin bottom 30
 
 # Utseende
 
 # Oppførsel
-focus_policy on_demand
-#on-demand
+focus_policy on-demand
 hide_on_focus_loss no
 
 # Wayland app-id for niri window rules
@@ -23,6 +23,4 @@ app_id kitty-quick-access
 kitty_override startup_session=~/.config/kitty/quick-access-vsplit.conf
 # Sørg for at splits-layout er tilgjengelig
 kitty_override enabled_layouts=splits,stack
-
-
 

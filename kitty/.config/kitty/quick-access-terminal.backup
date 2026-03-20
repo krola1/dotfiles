@@ -1,0 +1,21 @@
+# Plassering
+edge top
+lines 30
+columns 120
+
+# Marginer
+margin_top 30
+margin_left 100
+margin_right 100
+
+# Utseende
+background_opacity 0.9
+kitty_override font_size=14
+kitty_override background=#1e1e2e
+
+# Oppførsel
+focus_policy on-demand
+hide_on_focus_loss no
+
+# Wayland app-id for niri window rules
+app_id kitty-quick-access
