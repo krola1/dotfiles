@@ -82,8 +82,8 @@ def capability_name(etype, ecode):
         name = ecodes.KEY.get(ecode) or ecodes.BTN.get(ecode)
         if name is None:
             return f"key({ecode})"
-        # ecodes kan gi en liste (f.eks. BTN_A / BTN_SOUTH) – bruk første
-        if isinstance(name, list):
+        # ecodes kan gi en tuple/liste (f.eks. BTN_A / BTN_SOUTH) – bruk første
+        if isinstance(name, (list, tuple)):
             name = name[0]
         return name.lower()
 
@@ -91,7 +91,7 @@ def capability_name(etype, ecode):
         name = ecodes.ABS.get(ecode)
         if name is None:
             return f"abs({ecode})"
-        if isinstance(name, list):
+        if isinstance(name, (list, tuple)):
             name = name[0]
         return name.lower()
 
