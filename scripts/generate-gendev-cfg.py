@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generer input-delen av en MoltenGamepad gendev .cfg-fil fra en evdev-enhet.
+Genererer input-delen av en MoltenGamepad gendev .cfg-fil fra en evdev-enhet.
 
 Bruk:
     sudo python3 scripts/generate-gendev-cfg.py
