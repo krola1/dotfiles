@@ -10,8 +10,9 @@ Scriptet:
   2. Lar brukeren velge en enhet
   3. Lar brukeren velge enhetstype (gamepad eller keyboard)
   4. Leser capabilities (knapper/taster, akser, hats)
-  5. Skriver ut en .cfg-fil med match-header, driverinnstillinger og
-     event-definisjoner
+  5. Lagrer .cfg-filen i dotfiles-repoet under
+     moltengamepad/.config/moltengamepad/gendevices/<navn>.cfg
+  6. Skriver ut konfigurasjonen til terminalen
 
 For gamepad: aliaser må settes opp manuelt etterpå.
 For keyboard: device_type settes til "keyboard" og alle taster mappes.
@@ -19,6 +20,7 @@ For keyboard: device_type settes til "keyboard" og alle taster mappes.
 Krever: python-evdev  (pip install evdev  eller  pacman -S python-evdev)
 """
 
+import os
 import sys
 
 try:
@@ -421,9 +423,33 @@ def main():
     # 5. Generer .cfg
     cfg = generate_cfg(device, keys, abs_axes, device_type=device_type)
 
+    # 6. Lagre til gendevices-mappen i dotfiles-repoet
+    safe_name = (
+        device.name.lower()
+        .replace(" ", "_")
+        .replace("-", "_")
+        .replace("/", "_")
+        .replace("(", "")
+        .replace(")", "")
+    )
+    if len(safe_name) > 30:
+        safe_name = safe_name[:30]
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    output_dir = os.path.join(
+        repo_root, "moltengamepad", ".config", "moltengamepad", "gendevices"
+    )
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, f"{safe_name}.cfg")
+
+    with open(output_path, "w") as f:
+        f.write(cfg)
+        if not cfg.endswith("\n"):
+            f.write("\n")
+
     print("# " + "─" * 68)
-    print("# Generert gendev-konfigurasjon – kopier til")
-    print("#   ~/.config/moltengamepad/gendevices/<navn>.cfg")
+    print(f"# ✅ Konfigurasjon lagret i: {output_path}")
     if device_type == "gamepad":
         print("# Husk å legge til aliases manuelt etterpå!")
     else:
