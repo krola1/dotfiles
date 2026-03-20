@@ -83,7 +83,7 @@ def capability_name(etype, ecode):
         # ecodes kan gi en liste (f.eks. BTN_A / BTN_SOUTH) – bruk første
         if isinstance(name, list):
             name = name[0]
-        return name.lower()
+            return name.lower()
 
     if etype == ecodes.EV_ABS:
         name = ecodes.ABS.get(ecode)
