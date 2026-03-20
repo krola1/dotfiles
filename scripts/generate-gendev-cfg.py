@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Genererer input-delen av en MoltenGamepad gendev .cfg-fil fra en evdev-enhet.
+Genererer en MoltenGamepad gendev .cfg-fil fra en evdev-enhet.
 
 Bruk:
     sudo python3 scripts/generate-gendev-cfg.py
@@ -8,9 +8,13 @@ Bruk:
 Scriptet:
   1. Lister opp alle evdev-enheter (/dev/input/event*)
   2. Lar brukeren velge en enhet
-  3. Leser capabilities (knapper, akser, hats)
-  4. Skriver ut en .cfg-fil med match-header, driverinnstillinger og
-     event-definisjoner – uten aliases (det settes opp manuelt etterpå)
+  3. Lar brukeren velge enhetstype (gamepad eller keyboard)
+  4. Leser capabilities (knapper/taster, akser, hats)
+  5. Skriver ut en .cfg-fil med match-header, driverinnstillinger og
+     event-definisjoner
+
+For gamepad: aliaser må settes opp manuelt etterpå.
+For keyboard: device_type settes til "keyboard" og alle taster mappes.
 
 Krever: python-evdev  (pip install evdev  eller  pacman -S python-evdev)
 """
@@ -174,6 +178,74 @@ def categorize_keys(keys):
     ]
 
 
+def categorize_keyboard_keys(keys):
+    """Del tastatur-taster inn i kategorier for lesbar output."""
+    letters = []
+    numbers = []
+    function_keys = []
+    modifiers = []
+    navigation = []
+    editing = []
+    numpad = []
+    media = []
+    other = []
+
+    for k in keys:
+        kl = k.lower()
+        # Bokstaver (key_a – key_z)
+        if kl.startswith("key_") and len(kl) == 5 and kl[4].isalpha():
+            letters.append(k)
+        # Sifre (key_0 – key_9)
+        elif kl in ("key_0", "key_1", "key_2", "key_3", "key_4",
+                     "key_5", "key_6", "key_7", "key_8", "key_9"):
+            numbers.append(k)
+        # Funksjonstaster (key_f1 – key_f24)
+        elif kl.startswith("key_f") and kl[5:].isdigit():
+            function_keys.append(k)
+        # Modifikatortaster
+        elif kl in ("key_leftshift", "key_rightshift",
+                     "key_leftctrl", "key_rightctrl",
+                     "key_leftalt", "key_rightalt",
+                     "key_leftmeta", "key_rightmeta",
+                     "key_capslock", "key_numlock", "key_scrolllock"):
+            modifiers.append(k)
+        # Navigasjonstaster
+        elif kl in ("key_up", "key_down", "key_left", "key_right",
+                     "key_home", "key_end", "key_pageup", "key_pagedown",
+                     "key_insert", "key_delete"):
+            navigation.append(k)
+        # Redigeringstaster
+        elif kl in ("key_backspace", "key_tab", "key_enter", "key_space",
+                     "key_esc", "key_sysrq", "key_pause", "key_print",
+                     "key_compose", "key_menu"):
+            editing.append(k)
+        # Numpad-taster
+        elif kl.startswith("key_kp"):
+            numpad.append(k)
+        # Medietaster
+        elif kl in ("key_mute", "key_volumedown", "key_volumeup",
+                     "key_playpause", "key_stopcd", "key_previoussong",
+                     "key_nextsong", "key_media", "key_calc", "key_mail",
+                     "key_homepage", "key_brightnessdown", "key_brightnessup",
+                     "key_config", "key_sleep", "key_wakeup",
+                     "key_screenlock", "key_rfkill"):
+            media.append(k)
+        else:
+            other.append(k)
+
+    return [
+        ("Bokstaver", letters),
+        ("Sifre", numbers),
+        ("Funksjonstaster", function_keys),
+        ("Modifikatortaster", modifiers),
+        ("Navigasjonstaster", navigation),
+        ("Redigeringstaster", editing),
+        ("Numpad", numpad),
+        ("Medietaster", media),
+        ("Andre taster", other),
+    ]
+
+
 def categorize_axes(axes):
     """Del akser inn i kategorier for lesbar output."""
     sticks = []
@@ -200,7 +272,30 @@ def categorize_axes(axes):
     ]
 
 
-def generate_cfg(device, keys, abs_axes):
+def select_device_type():
+    """La brukeren velge enhetstype: gamepad eller keyboard."""
+    print("📦 Hvilken enhetstype vil du generere konfigurasjon for?\n")
+    print("  0)  Gamepad   – Standard gamepad / kontroller")
+    print("  1)  Keyboard  – Helt tastatur (mapper alle taster)")
+    print()
+
+    while True:
+        try:
+            raw = input("Velg enhetstype (0/1): ").strip()
+            idx = int(raw)
+            if idx == 0:
+                return "gamepad"
+            if idx == 1:
+                return "keyboard"
+            print("  ⚠️  Ugyldig valg – skriv 0 eller 1")
+        except ValueError:
+            print("  ⚠️  Skriv inn 0 eller 1")
+        except (KeyboardInterrupt, EOFError):
+            print("\n\nAvbrutt.")
+            sys.exit(0)
+
+
+def generate_cfg(device, keys, abs_axes, device_type="gamepad"):
     """Generer en MoltenGamepad gendev .cfg-fil som streng."""
     info = device.info
     vendor = format_hex(info.vendor)
@@ -232,28 +327,39 @@ def generate_cfg(device, keys, abs_axes):
 
     # ── Driverinnstillinger ──
     lines.append(f'name    = "{safe_name}"')
-    lines.append(f'devname = "pad"')
+    if device_type == "keyboard":
+        lines.append('devname = "kb"')
+    else:
+        lines.append(f'devname = "pad"')
     lines.append("")
     lines.append('exclusive = "true"')
     lines.append('change_permissions = "false"')
-    lines.append('rumble = "false"')
+    if device_type == "keyboard":
+        lines.append('device_type = "keyboard"')
+    else:
+        lines.append('rumble = "false"')
     lines.append("")
 
     # ── Event-definisjoner ──
 
-    # Knapper
-    key_categories = categorize_keys(keys)
+    if device_type == "keyboard":
+        # Tastatur: Kategoriser med tastatur-kategorier
+        key_categories = categorize_keyboard_keys(keys)
+    else:
+        # Gamepad: Kategoriser med gamepad-kategorier
+        key_categories = categorize_keys(keys)
+
     for label, group in key_categories:
         if not group:
             continue
         lines.append(f"# {label}")
         for k in group:
             internal = make_internal_name(k)
-            padded_key = k.ljust(12)
+            padded_key = k.ljust(16)
             lines.append(f'{padded_key} = "{internal}",  "{k}"')
         lines.append("")
 
-    # Akser
+    # Akser (begge moduser)
     axis_categories = categorize_axes(abs_axes)
     for label, group in axis_categories:
         if not group:
@@ -261,16 +367,23 @@ def generate_cfg(device, keys, abs_axes):
         lines.append(f"# {label}")
         for a in group:
             internal = make_internal_name(a)
-            padded_axis = a.ljust(12)
+            padded_axis = a.ljust(16)
             lines.append(f'{padded_axis} = "{internal}",  "{a}"')
         lines.append("")
 
-    # ── Aliaser (tom seksjon for manuell utfylling) ──
-    lines.append("# ── Aliases (fyll inn manuelt) ────────────────────────────")
-    lines.append("# alias first  <ditt_knappenavn>")
-    lines.append("# alias second <ditt_knappenavn>")
-    lines.append("# ... se dokumentasjonen for alle tilgjengelige alias-navn")
-    lines.append("")
+    # ── Aliaser ──
+    if device_type == "keyboard":
+        lines.append("# ── Tastatur-modus ──────────────────────────────────────")
+        lines.append("# device_type = \"keyboard\" sender events til det virtuelle")
+        lines.append("# tastaturslottet. Aliaser er normalt ikke nødvendig for")
+        lines.append("# tastatur-enheter – events brukes direkte.")
+        lines.append("")
+    else:
+        lines.append("# ── Aliases (fyll inn manuelt) ────────────────────────────")
+        lines.append("# alias first  <ditt_knappenavn>")
+        lines.append("# alias second <ditt_knappenavn>")
+        lines.append("# ... se dokumentasjonen for alle tilgjengelige alias-navn")
+        lines.append("")
 
     return "\n".join(lines)
 
@@ -292,21 +405,29 @@ def main():
     device = select_device(devices)
     print(f"\n✅ Valgt: {device.name}  ({device.path})")
 
-    # 3. Les capabilities
+    # 3. Velg enhetstype
+    print()
+    device_type = select_device_type()
+    print(f"\n✅ Enhetstype: {device_type}\n")
+
+    # 4. Les capabilities
     keys, abs_axes = gather_events(device)
-    print(f"   Fant {len(keys)} knapper og {len(abs_axes)} akser.\n")
+    print(f"   Fant {len(keys)} taster/knapper og {len(abs_axes)} akser.\n")
 
     if not keys and not abs_axes:
-        print("⚠️  Ingen knapper eller akser funnet på denne enheten.")
+        print("⚠️  Ingen taster, knapper eller akser funnet på denne enheten.")
         sys.exit(1)
 
-    # 4. Generer .cfg
-    cfg = generate_cfg(device, keys, abs_axes)
+    # 5. Generer .cfg
+    cfg = generate_cfg(device, keys, abs_axes, device_type=device_type)
 
     print("# " + "─" * 68)
     print("# Generert gendev-konfigurasjon – kopier til")
     print("#   ~/.config/moltengamepad/gendevices/<navn>.cfg")
-    print("# Husk å legge til aliases manuelt etterpå!")
+    if device_type == "gamepad":
+        print("# Husk å legge til aliases manuelt etterpå!")
+    else:
+        print("# Tastatur-modus: events sendes direkte til keyboard-slottet.")
     print("# " + "─" * 68)
     print()
     print(cfg)
