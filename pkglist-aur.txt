@@ -2,7 +2,6 @@ decky-loader-bin
 decky-loader-bin-debug
 droidcam
 droidcam-debug
-google-chrome
 input-remapper
 sgdboop-bin
 sgdboop-bin-debug

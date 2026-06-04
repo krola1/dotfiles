@@ -37,7 +37,7 @@ input {
     }
 
     touchpad {
-        off //TOGGLE_TOUCHPAD
+        //off //TOGGLE_TOUCHPAD
         tap
         dwt
         // dwtp
@@ -185,7 +185,9 @@ layout {
 // ==========================================================
 // STARTUP / ENVIRONMENT
 // ==========================================================
-
+//auth agent.
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+//
 environment {
     DISPLAY ":0"
 }
@@ -275,9 +277,11 @@ binds {
     }
 
     Mod+B {
-        spawn "vivaldi"
+        spawn "firefox"
     }
-
+   Mod+Shift+B {
+        spawn-sh "firefox --private-window"
+    }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
         spawn "swaylock"
     }
@@ -289,7 +293,7 @@ binds {
     // Toggle touchpad by editing config in-place.
     // Brittle: depends on line number in config.kdl.
     Mod+Space {
-    spawn-sh "sed -i 's|off //TOGGLE_TOUCHPAD|//off //TOGGLE_TOUCHPAD|;t;s|//off //TOGGLE_TOUCHPAD|off //TOGGLE_TOUCHPAD|' ~/.config/niri/config.kdl"
+    spawn-sh "sed -i 's|//off //TOGGLE_TOUCHPAD|//off //TOGGLE_TOUCHPAD|;t;s|//off //TOGGLE_TOUCHPAD|off //TOGGLE_TOUCHPAD|' ~/.config/niri/config.kdl"
 }
 
     // ------------------------------------------------------
