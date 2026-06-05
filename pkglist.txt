@@ -26,6 +26,7 @@ dmidecode
 efibootmgr
 evemu
 evtest
+exfatprogs
 eza
 fd
 firefox
