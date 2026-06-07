@@ -1,0 +1,6 @@
+beardedbear.beardedtheme
+dbaeumer.vscode-eslint
+dsznajder.es7-react-js-snippets
+esbenp.prettier-vscode
+monokai.theme-monokai-pro-vscode
+oderwat.indent-rainbow

@@ -181,6 +181,11 @@ layout {
     }
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 // ==========================================================
 // STARTUP / ENVIRONMENT
@@ -198,8 +203,8 @@ spawn-at-startup "xwayland-satellite"
 // UI
 spawn-at-startup "waybar"
 spawn-at-startup "cbatticon"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "swww img '~/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg'"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "awww img '~/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg'"
 
 // Clipboard manager
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"

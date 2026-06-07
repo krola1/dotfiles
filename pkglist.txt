@@ -112,6 +112,7 @@ tor
 torbrowser-launcher
 tree
 ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
 tuned
 tuned-ppd
 unrar
