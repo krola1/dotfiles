@@ -97,6 +97,8 @@ ripgrep
 rustup
 slurp
 smartmontools
+snap-pac
+snapper
 sof-firmware
 speedtest-cli
 spotify-launcher
@@ -107,7 +109,6 @@ swaybg
 swayidle
 swaylock
 system-config-printer
-timeshift
 tor
 torbrowser-launcher
 tree
