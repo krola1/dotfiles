@@ -17,6 +17,7 @@ USER_PACKAGES=(
   moltengamepad
   mako
   code-oss
+  swaylock
 )
 
 SYSTEM_PACKAGES=(

@@ -9,6 +9,7 @@ awww
 base
 base-devel
 bat
+bitwarden
 blueman
 bluez
 bluez-utils
@@ -16,6 +17,7 @@ brightnessctl
 btrfs-progs
 cameractrls
 cbatticon
+clamav
 cliphist
 code
 cronie
