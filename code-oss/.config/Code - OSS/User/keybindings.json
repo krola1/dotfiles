@@ -18,4 +18,8 @@
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active",
   },
+  {
+    "key": "ctrl+shift+w ctrl+shift+w",
+    "command": "workbench.action.terminal.new",
+  },
 ]

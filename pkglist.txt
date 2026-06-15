@@ -97,6 +97,7 @@ rclone
 reflector
 ripgrep
 rustup
+seahorse
 slurp
 smartmontools
 snap-pac

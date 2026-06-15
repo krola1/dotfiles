@@ -1,2 +1,3 @@
-image=/home/beastboy/.config/swaylock/wallpapers/Simple_Campfire.jpeg
-scaling=fill
+ignore-empty-password
+show-failed-attempts
+color=000000

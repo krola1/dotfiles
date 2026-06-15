@@ -18,6 +18,7 @@ USER_PACKAGES=(
   mako
   code-oss
   swaylock
+  qbittorrent
 )
 
 SYSTEM_PACKAGES=(

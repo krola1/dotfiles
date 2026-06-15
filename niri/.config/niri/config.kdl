@@ -204,7 +204,7 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "cbatticon"
 spawn-at-startup "awww-daemon"
-spawn-at-startup "awww img '~/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg'"
+spawn-sh-at-startup "sleep 3 && awww img \"$HOME/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg\""
 
 // Clipboard manager
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
