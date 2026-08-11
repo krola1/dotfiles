@@ -17,6 +17,7 @@ fish/
 │   ├── 20-abbr-general.fish        # Git, dotfiles, ls/lt/mkdir/grep/npm, div.
 │   ├── 25-abbr-git-identity.fish   # git-jobb / git-priv (bytt git-identitet)
 │   ├── 30-search-tools.fish        # Delt exclude-liste for fd-søk (se under)
+│   ├── 35-dotfiles-tools.fish      # $dotfiles_dir - fast peker til ~/dotfiles
 │   ├── fish_frozen_key_bindings.fish  # Fish-generert migreringsfil, la stå
 │   └── systemd-user-env.fish          # Importerer Wayland-env til systemd --user
 └── functions/
@@ -26,6 +27,8 @@ fish/
     ├── ffcd.fish            # Søk filnavn, cd til mappen filen ligger i
     ├── fcd.fish             # Søk mappenavn, cd inn i den
     ├── fc.fish              # Søk mappenavn, åpne i VS Code
+    ├── dcd.fish             # Søk config-mappe i ~/dotfiles (uansett $PWD), cd inn
+    ├── dcn.fish             # Søk config-fil i ~/dotfiles (uansett $PWD), åpne i nvim
     ├── mkcd.fish            # mkdir -p + cd i én kommando
     ├── rmcd.fish            # Slett nåværende mappe rekursivt, cd til foreldre
     ├── cdl.fish             # cd + ls -la
@@ -61,6 +64,9 @@ betingelser) i stedet for å bare utvide til statisk tekst.
 Sett dem med `set -g` i en dedikert fil under `conf.d/` (se
 `30-search-tools.fish`), og la funksjonene i `functions/` referere til
 variabelen. Da finnes listen ett sted, ikke kopiert inn i hver funksjon.
+Samme prinsipp brukes for `$dotfiles_dir` i `35-dotfiles-tools.fish`, som
+lar `dcd`/`dcn` alltid søke i `~/dotfiles` via fd sitt `--search-path`-flagg
+- helt uavhengig av hvilken mappe terminalen faktisk står i.
 
 **Interne hjelpefunksjoner** (ikke tenkt kalt direkte av deg):
 Prefiks med dobbel understrek, f.eks. `__fd_excludes.fish`. Dette er fish-
