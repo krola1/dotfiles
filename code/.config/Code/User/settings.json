@@ -1,0 +1,81 @@
+{
+  // ══════════════════════════════════════════════════════════
+  // TELEMETRI OG UTGÅENDE TRAFIKK
+  // ══════════════════════════════════════════════════════════
+  "telemetry.telemetryLevel": "off",
+  "telemetry.feedback.enabled": false,
+  "workbench.enableExperiments": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "npm.fetchOnlinePackageInfo": false,
+  "chat.disableAIFeatures": true,
+
+  // ══════════════════════════════════════════════════════════
+  // OPPDATERINGER — håndteres av pacman, ikke av VS Code
+  // ══════════════════════════════════════════════════════════
+  "update.mode": "none",
+  "update.showReleaseNotes": false,
+  "extensions.autoUpdate": "off",
+  "extensions.autoCheckUpdates": false,
+  "extensions.ignoreRecommendations": true,
+
+  // ══════════════════════════════════════════════════════════
+  // UTSEENDE OG FONTER
+  // ══════════════════════════════════════════════════════════
+  "workbench.colorTheme": "Bearded Theme Anthracite",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font'",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font'",
+  "terminal.integrated.fontLigatures.enabled": true,
+
+  // Live undervisning / skjermdeling — kommenter inn ved behov
+  // "editor.fontSize": 18,
+  // "terminal.integrated.fontSize": 16,
+  // "window.zoomLevel": 1,
+
+  // ══════════════════════════════════════════════════════════
+  // FORMATERING
+  // ══════════════════════════════════════════════════════════
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // ══════════════════════════════════════════════════════════
+  // TERMINAL
+  // ══════════════════════════════════════════════════════════
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.profiles.linux": {
+    "fish": {
+      "path": "/usr/bin/fish",
+    },
+    "bash": {
+      "path": "/usr/bin/bash",
+      "icon": "terminal-bash",
+    },
+    "zsh": {
+      "path": "/usr/bin/zsh",
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux",
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell",
+    },
+  },
+
+  // ══════════════════════════════════════════════════════════
+  // GIT
+  // ══════════════════════════════════════════════════════════
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+
+  // ══════════════════════════════════════════════════════════
+  // REACT / JAVASCRIPT
+  // ══════════════════════════════════════════════════════════
+  "editor.linkedEditing": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+  },
+  "explorer.compactFolders": false,
+}

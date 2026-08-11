@@ -1,1 +1,11 @@
 __pycache__/
+
+# VS Code – runtime-data skal aldri committes
+code/.config/Code/*
+!code/.config/Code/User/
+code/.config/Code/User/*
+!code/.config/Code/User/settings.json
+!code/.config/Code/User/keybindings.json
+!code/.config/Code/User/snippets/
+code/.vscode/*
+!code/.vscode/argv.json

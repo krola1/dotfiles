@@ -23,7 +23,6 @@ cameractrls
 cbatticon
 clamav
 cliphist
-code
 cronie
 cups
 cups-pk-helper
@@ -83,8 +82,8 @@ mako
 monero-gui
 nano
 neovim
-network-manager-applet
 networkmanager
+network-manager-applet
 niri
 nmap
 nodejs
