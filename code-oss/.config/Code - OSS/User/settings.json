@@ -33,4 +33,8 @@
     },
   },
   "terminal.integrated.defaultProfile.linux": "fish",
+  "chat.disableAIFeatures": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
 }

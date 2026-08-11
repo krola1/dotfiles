@@ -1,8 +1,16 @@
 decky-loader-bin
 decky-loader-bin-debug
+dirbuster
+dirbuster-wordlists
+dirstalk
+dirstalk-debug
 droidcam
 droidcam-debug
 input-remapper
+jmtpfs
+jmtpfs-debug
+parallels-client
+python-pkg_resources
 sgdboop-bin
 sgdboop-bin-debug
 xpadneo-dkms

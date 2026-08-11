@@ -63,8 +63,8 @@ input {
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
-        // scroll-method "on-button-down"
         // scroll-button 273
+        // scroll-method "on-button-down"
         // scroll-button-lock
         // middle-emulation
     }
@@ -92,7 +92,7 @@ output "eDP-1" {
 output "HDMI-A-1" {
     position x=1920 y=0
     mode "3840x2160@60.00"
-    scale 1
+    scale 1.5
 }
 
 output "DP-2" {
@@ -211,9 +211,10 @@ spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 
 // Apps
 spawn-at-startup "protonvpn-app"
+
+spawn-at-startup "discord"
+
 spawn-at-startup "qbittorrent"
-
-
 // ==========================================================
 // WINDOW RULES
 // ==========================================================
@@ -310,19 +311,19 @@ binds {
     }
 
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025+"
     }
 
     Mod+Plus {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025+"
     }
 
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025-"
     }
 
     Mod+Minus {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025-"
     }
 
     XF86AudioMute allow-when-locked=true {

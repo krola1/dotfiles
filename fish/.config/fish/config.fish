@@ -35,7 +35,20 @@ alias cls='clear'
 alias cat='bat'
 
 ##### Funksjoner (functions) ###################################################
+
+function mkcd --description 'Opprett en mappe og gå inn i den'
+    mkdir -p $argv
+    and cd $argv
+end
+
+function rmcd
+    set current $PWD
+    cd ..
+    and rm -rf $current
+end
+
 # cdl: cd inn i mappe og list innhold
+
 function cdl
     cd $argv[1]; and ls -la
 end
