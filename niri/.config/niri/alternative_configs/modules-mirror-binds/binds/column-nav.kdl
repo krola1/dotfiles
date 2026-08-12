@@ -1,0 +1,65 @@
+// ------------------------------------------------------
+// In-column window navigation / tabbing / consume-expel
+// ------------------------------------------------------
+
+binds {
+    Mod+Alt+Up {
+        focus-window-up
+    }
+
+    Mod+Z {
+        focus-window-up
+    }
+
+    Mod+I {
+        focus-window-up
+    }
+
+    Mod+Alt+Down {
+        focus-window-down
+    }
+
+    Mod+X {
+        focus-window-down
+    }
+
+    Mod+U {
+        focus-window-down
+    }
+
+    Mod+Y {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+Shift+Up {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+Shift+Down {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+oslash {
+        expel-window-from-column
+    }
+
+    Mod+Comma {
+        consume-or-expel-window-left
+    }
+
+    Mod+ae {
+        consume-window-into-column
+    }
+
+    Mod+Period {
+        consume-or-expel-window-right
+    }
+
+    Mod+T {
+        toggle-column-tabbed-display
+    }
+
+    Mod+aring {
+        toggle-column-tabbed-display
+    }
+}

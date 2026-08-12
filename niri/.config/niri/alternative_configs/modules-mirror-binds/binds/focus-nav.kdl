@@ -1,0 +1,51 @@
+// ------------------------------------------------------
+// Focus navigation: columns / monitors / workspaces
+// ------------------------------------------------------
+
+binds {
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Right { focus-column-or-monitor-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+L     { focus-column-or-monitor-right; }
+
+    Mod+Down  { focus-workspace-down; }
+    Mod+Up    { focus-workspace-up; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+
+    Alt+Tab {
+        focus-window-previous
+    }
+
+    Mod+Home {
+        focus-column-first
+    }
+
+    Mod+End {
+        focus-column-last
+    }
+
+    Mod+Shift+Left {
+        focus-monitor-left
+    }
+
+    Mod+Shift+Right {
+        focus-monitor-right
+    }
+
+    Mod+Shift+Tab {
+        focus-monitor-previous
+    }
+
+    Mod+Page_Down {
+        focus-workspace-down
+    }
+
+    Mod+Page_Up {
+        focus-workspace-up
+    }
+
+    Mod+Tab {
+        focus-workspace-previous
+    }
+}

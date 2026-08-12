@@ -1,0 +1,53 @@
+// ------------------------------------------------------
+// Sizing / layout actions
+// ------------------------------------------------------
+
+binds {
+    Mod+R {
+        switch-preset-column-width
+    }
+
+    Mod+Shift+R {
+        switch-preset-window-height
+    }
+
+    Mod+Ctrl+R {
+        reset-window-height
+    }
+
+    Mod+F {
+        maximize-column
+    }
+
+    Mod+Shift+F {
+        fullscreen-window
+    }
+
+    Mod+Ctrl+F {
+        expand-column-to-available-width
+    }
+
+    Mod+C {
+        center-column
+    }
+
+    Mod+Ctrl+C {
+        center-visible-columns
+    }
+
+    Mod+Shift+H {
+        set-column-width "-10%"
+    }
+
+    Mod+Shift+J {
+        set-window-height "+10%"
+    }
+
+    Mod+Shift+K {
+        set-window-height "-10%"
+    }
+
+    Mod+Shift+L {
+        set-column-width "+10%"
+    }
+}

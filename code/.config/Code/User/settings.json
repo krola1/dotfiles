@@ -78,4 +78,7 @@
     "javascript": "javascriptreact",
   },
   "explorer.compactFolders": false,
+  "[shellscript]": {
+    "editor.defaultFormatter": "mads-hartmann.bash-ide-vscode",
+  },
 }

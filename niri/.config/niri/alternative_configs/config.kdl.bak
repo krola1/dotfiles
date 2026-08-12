@@ -1,0 +1,733 @@
+// ==========================================================
+// Niri config
+// KDL format: https://kdl.dev
+// Wiki: https://yalter.github.io/niri/Configuration:-Introduction
+// ==========================================================
+
+
+// ==========================================================
+// GLOBALS / SESSION
+// ==========================================================
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.6
+}
+
+
+// ==========================================================
+// INPUT
+// ==========================================================
+
+input {
+    keyboard {
+        xkb {
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+        }
+
+        numlock
+    }
+
+    touchpad {
+        //off //TOGGLE_TOUCHPAD
+        tap
+        dwt
+        // dwtp
+        drag true
+        drag-lock
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-button 273
+        // scroll-method "on-button-down"
+        // scroll-button-lock
+        // middle-emulation
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+
+// ==========================================================
+// OUTPUTS
+// Layout:
+// - eDP-1 = laptop screen
+// - HDMI-A-1 / DP-2 = external 4K screen to the right
+// - DP-1 = 1080p screen above
+// ==========================================================
+output "eDP-1" {
+    mode "2880x1800@120.000"
+    scale 1.5
+    transform "normal"
+    position x=0 y=0
+}
+
+// 4K @ scale 1.5 = 2560x1440 logisk, til venstre for eDP-1
+output "DP-1" {
+    scale 1.5
+    position x=-2560 y=0
+}
+
+output "HDMI-A-1" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    position x=1920 y=0
+}
+
+output "DP-2" {
+    mode "3840x2160@30.00"
+    scale 1
+    position x=1920 y=0
+}
+
+
+// ==========================================================
+// LAYOUT
+// ==========================================================
+
+layout {
+    // --- spacing / sizing ---
+    gaps 16
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        // fixed 1920
+    }
+
+    // preset-window-heights { }
+
+    default-column-width { proportion 0.5; }
+
+    // --- focus ring ---
+    focus-ring {
+        // off
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    // --- border ---
+    border {
+        off
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+        urgent-color "#9b0000"
+        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    // --- shadows ---
+    shadow {
+        // on
+        // draw-behind-window true
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    // --- reserved space ---
+    struts {
+        // left 64
+        // right 64
+        top -10
+        // bottom 64
+    }
+
+    // --- tabs ---
+    default-column-display "normal"
+
+    tab-indicator {
+        width 10
+        // gap 10
+        length total-proportion=0.5
+        position "bottom"
+        // place-within-column
+        hide-when-single-tab
+        active-color "#ff8800"
+    }
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// ==========================================================
+// STARTUP / ENVIRONMENT
+// ==========================================================
+//auth agent.
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+//
+environment {
+    DISPLAY ":0"
+}
+
+// Session / compatibility
+spawn-at-startup "xwayland-satellite"
+
+// UI
+spawn-at-startup "waybar"
+spawn-at-startup "cbatticon"
+spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "sleep 3 && awww img \"$HOME/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg\""
+
+// Clipboard manager
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+// Apps
+spawn-at-startup "protonvpn-app"
+
+spawn-at-startup "discord"
+
+spawn-at-startup "qbittorrent"
+// ==========================================================
+// WINDOW RULES
+// ==========================================================
+
+// --- generic rules ---
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+// --- app-specific rules ---
+
+// Work around WezTerm initial configure bug
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Firefox picture-in-picture should float
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Floating Kitty scratch / popup terminal
+window-rule {
+    match app-id="floatingKitty"
+    open-floating true
+    default-column-width { fixed 768; }
+    default-window-height { fixed 480; }
+    // default-column-width { proportion 0.4; }
+    // default-window-height { proportion 0.4; }
+    // default-floating-position x=10 y=10 relative-to="top"
+}
+
+// Example: block out apps from screen capture
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    block-out-from "screen-capture"
+    // block-out-from "screencast"
+}
+
+
+// ==========================================================
+// BINDS
+// ==========================================================
+
+binds {
+    // ------------------------------------------------------
+    // Overlay / launchers / apps
+    // ------------------------------------------------------
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+W hotkey-overlay-title="Open a Terminal: Kitty" {
+        spawn "kitty" "--class=floatingKitty"
+    }
+
+    Mod+Return hotkey-overlay-title="Open a Terminal: Kitty" {
+        spawn "kitty"
+    }
+
+    Mod+A hotkey-overlay-title="Run an Application: fuzzel" {
+        spawn "fuzzel"
+    }
+
+    Mod+B {
+        spawn "firefox"
+    }
+   Mod+Shift+B {
+        spawn-sh "firefox --private-window"
+    }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
+        spawn "swaylock"
+    }
+
+    Mod+P {
+        spawn-sh "grim -g \"$(slurp)\" - | wl-copy"
+    }
+
+    // Toggle touchpad by editing config in-place.
+    // Brittle: depends on line number in config.kdl.
+    Mod+Space {
+    spawn-sh "sed -i 's|//off //TOGGLE_TOUCHPAD|//off //TOGGLE_TOUCHPAD|;t;s|//off //TOGGLE_TOUCHPAD|off //TOGGLE_TOUCHPAD|' ~/.config/niri/config.kdl"
+}
+
+    // ------------------------------------------------------
+    // Accessibility / media / brightness
+    // ------------------------------------------------------
+
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {
+        spawn-sh "pkill orca || exec orca"
+    }
+
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025+"
+    }
+
+    Mod+Plus {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025+"
+    }
+
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025-"
+    }
+
+    Mod+Minus {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.025-"
+    }
+
+    XF86AudioMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    }
+
+    XF86AudioMicMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    }
+
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "+10%"
+    }
+
+    Mod+Shift+Plus {
+        spawn "brightnessctl" "--class=backlight" "set" "+10%"
+    }
+
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "10%-"
+    }
+
+    Mod+Shift+Minus {
+        spawn "brightnessctl" "--class=backlight" "set" "10%-"
+    }
+
+
+    // ------------------------------------------------------
+    // Session / overview / quit / power
+    // ------------------------------------------------------
+
+    Mod+O repeat=false {
+        toggle-overview
+    }
+
+    Mod+Q repeat=false {
+        close-window
+    }
+
+    Mod+Escape allow-inhibiting=false {
+        toggle-keyboard-shortcuts-inhibit
+    }
+
+    Mod+Shift+E {
+        quit
+    }
+
+    Ctrl+Alt+Delete {
+        quit
+    }
+
+    Mod+Shift+P {
+        power-off-monitors
+    }
+
+
+    // ------------------------------------------------------
+    // Focus navigation: columns / monitors / workspaces
+    // ------------------------------------------------------
+
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Right { focus-column-or-monitor-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+L     { focus-column-or-monitor-right; }
+
+    Mod+Down  { focus-workspace-down; }
+    Mod+Up    { focus-workspace-up; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+
+    Alt+Tab {
+        focus-window-previous
+    }
+
+    Mod+Home {
+        focus-column-first
+    }
+
+    Mod+End {
+        focus-column-last
+    }
+
+    Mod+Shift+Left {
+        focus-monitor-left
+    }
+
+    Mod+Shift+Right {
+        focus-monitor-right
+    }
+
+    Mod+Shift+Tab {
+        focus-monitor-previous
+    }
+
+    Mod+Page_Down {
+        focus-workspace-down
+    }
+
+    Mod+Page_Up {
+        focus-workspace-up
+    }
+
+    Mod+Tab {
+        focus-workspace-previous
+    }
+
+
+    // ------------------------------------------------------
+    // Move columns / windows between columns, monitors, workspaces
+    // ------------------------------------------------------
+
+    Mod+Ctrl+Left  { move-column-left-or-to-monitor-left; }
+    Mod+Ctrl+Right { move-column-right-or-to-monitor-right; }
+    Mod+Ctrl+H     { move-column-left-or-to-monitor-left; }
+    Mod+Ctrl+L     { move-column-right-or-to-monitor-right; }
+
+    Mod+Ctrl+Down { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+Up   { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+J    { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K    { move-window-up-or-to-workspace-up; }
+
+    Mod+Ctrl+Home {
+        move-column-to-first
+    }
+
+    Mod+Ctrl+End {
+        move-column-to-last
+    }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+Shift+Ctrl+Down {
+        move-column-to-monitor-down
+    }
+
+    Mod+Shift+Ctrl+Up {
+        move-column-to-monitor-up
+    }
+
+    Mod+Shift+Ctrl+J {
+        move-column-to-monitor-down
+    }
+
+    Mod+Shift+Ctrl+K {
+        move-column-to-monitor-up
+    }
+
+    Mod+Ctrl+Page_Down {
+        move-column-to-workspace-down
+    }
+
+    Mod+Ctrl+Page_Up {
+        move-column-to-workspace-up
+    }
+
+    Mod+Ctrl+U {
+        move-column-to-workspace-down
+    }
+
+    Mod+Ctrl+I {
+        move-column-to-workspace-up
+    }
+
+    Mod+Shift+Page_Down {
+        move-workspace-down
+    }
+
+    Mod+Shift+Page_Up {
+        move-workspace-up
+    }
+
+    Mod+Shift+U {
+        move-workspace-down
+    }
+
+    Mod+Shift+I {
+        move-workspace-up
+    }
+
+
+    // ------------------------------------------------------
+    // Scroll-based navigation
+    // ------------------------------------------------------
+
+    Mod+WheelScrollDown cooldown-ms=150 {
+        focus-workspace-down
+    }
+
+    Mod+WheelScrollUp cooldown-ms=150 {
+        focus-workspace-up
+    }
+
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 {
+        move-column-to-workspace-down
+    }
+
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 {
+        move-column-to-workspace-up
+    }
+
+    Mod+WheelScrollRight {
+        focus-column-right
+    }
+
+    Mod+WheelScrollLeft {
+        focus-column-left
+    }
+
+    Mod+Ctrl+WheelScrollRight {
+        move-column-right
+    }
+
+    Mod+Ctrl+WheelScrollLeft {
+        move-column-left
+    }
+
+    Mod+Shift+WheelScrollDown {
+        focus-column-right
+    }
+
+    Mod+Shift+WheelScrollUp {
+        focus-column-left
+    }
+
+    Mod+Ctrl+Shift+WheelScrollDown {
+        move-column-right
+    }
+
+    Mod+Ctrl+Shift+WheelScrollUp {
+        move-column-left
+    }
+
+
+    // ------------------------------------------------------
+    // Workspaces by number
+    // ------------------------------------------------------
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+
+    // ------------------------------------------------------
+    // In-column window navigation / tabbing / consume-expel
+    // ------------------------------------------------------
+
+    Mod+Alt+Up {
+        focus-window-up
+    }
+
+    Mod+Z {
+        focus-window-up
+    }
+
+    Mod+I {
+        focus-window-up
+    }
+
+    Mod+Alt+Down {
+        focus-window-down
+    }
+
+    Mod+X {
+        focus-window-down
+    }
+
+    Mod+U {
+        focus-window-down
+    }
+
+    Mod+Y {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+Shift+Up {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+Shift+Down {
+        switch-focus-between-floating-and-tiling
+    }
+
+    Mod+oslash {
+        expel-window-from-column
+    }
+
+    Mod+Comma {
+        consume-or-expel-window-left
+    }
+
+    Mod+ae {
+        consume-window-into-column
+    }
+
+    Mod+Period {
+        consume-or-expel-window-right
+    }
+
+    Mod+T {
+        toggle-column-tabbed-display
+    }
+
+    Mod+aring {
+        toggle-column-tabbed-display
+    }
+
+
+    // ------------------------------------------------------
+    // Sizing / layout actions
+    // ------------------------------------------------------
+
+    Mod+R {
+        switch-preset-column-width
+    }
+
+    Mod+Shift+R {
+        switch-preset-window-height
+    }
+
+    Mod+Ctrl+R {
+        reset-window-height
+    }
+
+    Mod+F {
+        maximize-column
+    }
+
+    Mod+Shift+F {
+        fullscreen-window
+    }
+
+    Mod+Ctrl+F {
+        expand-column-to-available-width
+    }
+
+    Mod+C {
+        center-column
+    }
+
+    Mod+Ctrl+C {
+        center-visible-columns
+    }
+
+    Mod+Shift+H {
+        set-column-width "-10%"
+    }
+
+    Mod+Shift+J {
+        set-window-height "+10%"
+    }
+
+    Mod+Shift+K {
+        set-window-height "-10%"
+    }
+
+    Mod+Shift+L {
+        set-column-width "+10%"
+    }
+
+
+    // ------------------------------------------------------
+    // Floating
+    // ------------------------------------------------------
+
+    Mod+V {
+        toggle-window-floating
+    }
+
+    Mod+Shift+V {
+        switch-focus-between-floating-and-tiling
+    }
+
+
+    // ------------------------------------------------------
+    // Screenshots
+    // ------------------------------------------------------
+
+    Print {
+        screenshot
+    }
+
+    Ctrl+Print {
+        screenshot-screen
+    }
+
+    Alt+Print {
+        screenshot-window
+    }
+}

@@ -1,0 +1,25 @@
+// ==========================================================
+// main.kdl - inngangsport for "mirror-binds"-varianten
+// Brukes for nested testing: niri -c main.kdl
+// Se README.md i denne mappa for hvordan gjøre det permanent.
+// ==========================================================
+
+include "globals.kdl"
+include "input.kdl"
+include "outputs.kdl"
+include "layout.kdl"
+include "gestures.kdl"
+include "startup.kdl"
+include "window-rules.kdl"
+
+include "binds/launchers.kdl"
+include "binds/media-brightness.kdl"
+include "binds/session-power.kdl"
+include "binds/focus-nav.kdl"
+include "binds/move-nav.kdl"
+include "binds/scroll-nav.kdl"
+include "binds/workspace-numbers.kdl"
+include "binds/column-nav.kdl"
+include "binds/sizing.kdl"
+include "binds/floating.kdl"
+include "binds/screenshots.kdl"

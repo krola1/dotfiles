@@ -1,0 +1,13 @@
+// ------------------------------------------------------
+// Floating
+// ------------------------------------------------------
+
+binds {
+    Mod+V {
+        toggle-window-floating
+    }
+
+    Mod+Shift+V {
+        switch-focus-between-floating-and-tiling
+    }
+}

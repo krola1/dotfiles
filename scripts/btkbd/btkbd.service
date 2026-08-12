@@ -1,0 +1,14 @@
+[Unit]
+Description=Bluetooth HID keyboard/mouse emulator
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+Type=simple
+# Legg inn MAC-adressen til gamingpcen etter --connect for å koble ut selv.
+ExecStart=/usr/local/bin/btkbd --name "Laptop Keyboard"
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

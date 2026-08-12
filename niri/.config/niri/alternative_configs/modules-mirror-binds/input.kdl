@@ -1,0 +1,50 @@
+// ==========================================================
+// INPUT
+// ==========================================================
+
+input {
+    keyboard {
+        xkb {
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+        }
+
+        numlock
+    }
+
+    touchpad {
+        //off //TOGGLE_TOUCHPAD
+        tap
+        dwt
+        // dwtp
+        drag true
+        drag-lock
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-button 273
+        // scroll-method "on-button-down"
+        // scroll-button-lock
+        // middle-emulation
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}

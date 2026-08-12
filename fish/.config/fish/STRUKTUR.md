@@ -27,14 +27,15 @@ fish/
     ├── ffcd.fish            # Søk filnavn, cd til mappen filen ligger i
     ├── fcd.fish             # Søk mappenavn, cd inn i den
     ├── fc.fish              # Søk mappenavn, åpne i VS Code
-    ├── dcd.fish             # Søk config-mappe i ~/dotfiles (uansett $PWD), cd inn
+    ├── dcd.fish             # Søk toppnivå-pakke i ~/dotfiles, cd inn i selve config-mappen (f.eks. .config/niri)
     ├── dcn.fish             # Søk config-fil i ~/dotfiles (uansett $PWD), åpne i nvim
     ├── mkcd.fish            # mkdir -p + cd i én kommando
     ├── rmcd.fish            # Slett nåværende mappe rekursivt, cd til foreldre
     ├── cdl.fish             # cd + ls -la
     ├── sc.fish              # ripgrep+fzf søk med forhåndsvisning i bat/nvim
     ├── reload.fish          # Restart fish-shell + reload kitty-farger
-    └── rgf.fish             # ripgrep med gode defaults
+    ├── rgf.fish             # ripgrep med gode defaults
+    └── btkbd.fish           # Kjør scripts/btkbd/btkbd.py (uansett $PWD)
 ```
 
 ## Hvorfor delt opp slik

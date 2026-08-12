@@ -1,0 +1,39 @@
+// ------------------------------------------------------
+// Overlay / launchers / apps
+// ------------------------------------------------------
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Mod+W hotkey-overlay-title="Open a Terminal: Kitty" {
+        spawn "kitty" "--class=floatingKitty"
+    }
+
+    Mod+Return hotkey-overlay-title="Open a Terminal: Kitty" {
+        spawn "kitty"
+    }
+
+    Mod+A hotkey-overlay-title="Run an Application: fuzzel" {
+        spawn "fuzzel"
+    }
+
+    Mod+B {
+        spawn "firefox"
+    }
+   Mod+Shift+B {
+        spawn-sh "firefox --private-window"
+    }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
+        spawn "swaylock"
+    }
+
+    Mod+P {
+        spawn-sh "grim -g \"$(slurp)\" - | wl-copy"
+    }
+
+    // Toggle touchpad by editing config in-place.
+    // Brittle: depends on line number i input-modulen.
+    Mod+Space {
+    spawn-sh "sed -i 's|//off //TOGGLE_TOUCHPAD|//off //TOGGLE_TOUCHPAD|;t;s|//off //TOGGLE_TOUCHPAD|off //TOGGLE_TOUCHPAD|' ~/.config/niri/config.kdl"
+}
+}

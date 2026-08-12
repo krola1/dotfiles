@@ -1,3 +1,4 @@
+claude-code
 decky-loader-bin
 dirbuster
 dirbuster-wordlists

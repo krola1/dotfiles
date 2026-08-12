@@ -1,0 +1,30 @@
+// ==========================================================
+// APPS
+// Oppstart av programmer + miljoevariabler.
+// ==========================================================
+
+//auth agent.
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+//
+environment {
+    DISPLAY ":0"
+}
+
+// Session / compatibility
+spawn-at-startup "xwayland-satellite"
+
+// UI
+spawn-at-startup "waybar"
+spawn-at-startup "cbatticon"
+spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "sleep 3 && awww img \"$HOME/Pictures/Wallpapers/140 High Resolution Wallpapers That Don't Suck - 2020 Edition/Minimalism/Simple_Campfire.jpeg\""
+
+// Clipboard manager
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+// Apps
+spawn-at-startup "protonvpn-app"
+
+spawn-at-startup "discord"
+
+spawn-at-startup "qbittorrent"

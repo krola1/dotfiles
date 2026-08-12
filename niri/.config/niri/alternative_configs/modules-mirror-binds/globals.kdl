@@ -1,0 +1,16 @@
+// ==========================================================
+// GLOBALS / SESSION
+// Utpakket fra config.kdl (modules-mirror-variant)
+// ==========================================================
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    slowdown 0.6
+}

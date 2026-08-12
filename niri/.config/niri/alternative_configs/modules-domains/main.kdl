@@ -1,0 +1,12 @@
+// ==========================================================
+// main.kdl - inngangsport for "domains"-varianten
+// Brukes for nested testing: niri -c main.kdl
+// Se README.md i denne mappa for hvordan gjøre det permanent.
+// ==========================================================
+
+include "session.kdl"
+include "machine.kdl"
+include "appearance.kdl"
+include "apps.kdl"
+include "window-rules.kdl"
+include "binds.kdl"

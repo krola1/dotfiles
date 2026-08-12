@@ -1,0 +1,31 @@
+// ==========================================================
+// OUTPUTS
+// Layout:
+// - eDP-1 = laptop screen
+// - HDMI-A-1 / DP-2 = external 4K screen to the right
+// - DP-1 = 1080p screen above
+// ==========================================================
+output "eDP-1" {
+    mode "2880x1800@120.000"
+    scale 1.5
+    transform "normal"
+    position x=0 y=0
+}
+
+// 4K @ scale 1.5 = 2560x1440 logisk, til venstre for eDP-1
+output "DP-1" {
+    scale 1.5
+    position x=-2560 y=0
+}
+
+output "HDMI-A-1" {
+    mode "3840x2160@60.000"
+    scale 1.5
+    position x=1920 y=0
+}
+
+output "DP-2" {
+    mode "3840x2160@30.00"
+    scale 1
+    position x=1920 y=0
+}
