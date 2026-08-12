@@ -1,5 +1,8 @@
 __pycache__/
 
+# Lokal git-identitet (navn/e-post) skal ikke committes
+fish/.config/fish/conf.d/25-abbr-git-identity.local.fish
+
 # VS Code – runtime-data skal aldri committes
 code/.config/Code/*
 !code/.config/Code/User/
