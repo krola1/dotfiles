@@ -128,10 +128,10 @@ binds {
     Mod+H     { focus-column-or-monitor-left; }
     Mod+L     { focus-column-or-monitor-right; }
 
-    Mod+Down  { focus-workspace-down; }
-    Mod+Up    { focus-workspace-up; }
-    Mod+J     { focus-workspace-down; }
-    Mod+K     { focus-workspace-up; }
+    Mod+Down  { spawn "niri-stash-nav" "down"; }
+    Mod+Up    { spawn "niri-stash-nav" "up"; }
+    Mod+J     { spawn "niri-stash-nav" "down"; }
+    Mod+K     { spawn "niri-stash-nav" "up"; }
 
     Alt+Tab {
         focus-window-previous

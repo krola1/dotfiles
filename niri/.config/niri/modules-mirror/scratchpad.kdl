@@ -1,4 +1,6 @@
-spawn-at-startup "niri-scratchpad" "daemon"
+// Krever patchet niri (niri-git fra PR #2997) for "hidden true" - se ../NIRI-GIT-SETUP.md
+// ikke i bruk nå (bindene under bruker niri-stash-toggle, ikke registre) - la stå i tilfelle create/delete/get trengs igjen
+// spawn-at-startup "niri-scratchpad" "daemon"
 
 
 workspace "stash" {
@@ -6,6 +8,6 @@ workspace "stash" {
 }
 
 binds {
-    Mod+S { spawn "niri-scratchpad" "create" "1"; }
-    Mod+Shift+S { spawn "niri-scratchpad" "delete" "1"; }
+    Mod+S { spawn "niri-stash-toggle"; }
+    Mod+Shift+S { move-window-to-workspace "stash" focus=false; }
 }

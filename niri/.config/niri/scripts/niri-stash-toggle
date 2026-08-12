@@ -1,24 +1,12 @@
 #!/usr/bin/env fish
 
-set -l state "$XDG_RUNTIME_DIR/niri-stash-prev"
 set -l json (niri msg --json workspaces-with-hidden)
 set -l name (echo $json | jq -r '.[] | select(.is_focused) | .name // ""')
 set -l id (echo $json | jq -r '.[] | select(.is_focused) | .id')
 
 if test "$name" = stash
-    if test -f $state
-        set -l target_id (cat $state)
-        set -l target (echo $json | jq -r --arg id "$target_id" \
-            '.[] | select((.id|tostring) == $id) | (.name // (.idx|tostring))')
-        if test -n "$target"
-            niri msg action focus-workspace $target
-        else
-            niri msg action focus-workspace-previous
-        end
-    else
-        niri msg action focus-workspace-previous
-    end
+    niri-stash-leave
 else
-    echo $id >$state
+    echo $id >"$XDG_RUNTIME_DIR/niri-stash-prev"
     niri msg action focus-workspace stash
 end

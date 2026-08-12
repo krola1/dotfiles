@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+
+# focus-workspace-down/up er idx-basert og vet ikke at "stash" ligger
+# øverst i stacken. Fra stash skal opp/ned bety "gå tilbake dit jeg kom
+# fra", ikke "neste idx" (som kan havne på en helt annen workspace enn
+# den man faktisk kom fra). Brukes av Mod+Down/Up og Mod+J/K.
+
+set -l dir $argv[1]
+set -l name (niri msg --json workspaces-with-hidden | jq -r '.[] | select(.is_focused) | .name // ""')
+
+if test "$name" = stash
+    niri-stash-leave
+else
+    niri msg action focus-workspace-$dir
+end

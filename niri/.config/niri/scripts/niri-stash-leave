@@ -1,0 +1,20 @@
+#!/usr/bin/env fish
+
+# Forlat stash og gå tilbake dit du kom fra (brukes av niri-stash-toggle
+# og niri-stash-nav). Extrahert hit slik at begge kan dele samme logikk.
+
+set -l state "$XDG_RUNTIME_DIR/niri-stash-prev"
+
+if test -f $state
+    set -l json (niri msg --json workspaces-with-hidden)
+    set -l target_id (cat $state)
+    set -l target (echo $json | jq -r --arg id "$target_id" \
+        '.[] | select((.id|tostring) == $id) | (.name // (.idx|tostring))')
+    if test -n "$target"
+        niri msg action focus-workspace $target
+    else
+        niri msg action focus-workspace-previous
+    end
+else
+    niri msg action focus-workspace-previous
+end

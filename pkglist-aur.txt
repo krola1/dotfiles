@@ -6,6 +6,7 @@ dirstalk
 droidcam
 input-remapper
 jmtpfs
+niri-git
 parallels-client
 sgdboop-bin
 visual-studio-code-bin

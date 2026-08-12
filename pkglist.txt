@@ -47,6 +47,7 @@ gd
 ghostscript
 gimp
 git
+git-filter-repo
 github-cli
 go-md2man
 grim
@@ -61,6 +62,7 @@ intel-media-driver
 intel-ucode
 iwd
 jq
+kdeconnect
 keyd
 kitty
 kleopatra
@@ -84,7 +86,6 @@ nano
 neovim
 networkmanager
 network-manager-applet
-niri
 nmap
 nodejs
 noto-fonts-emoji
@@ -114,6 +115,7 @@ snapper
 sof-firmware
 speedtest-cli
 spotify-launcher
+sshfs
 steam
 stow
 sudo

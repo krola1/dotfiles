@@ -62,6 +62,7 @@ tooltip {
 #custom-updates,
 #custom-wallchange,
 #custom-wbar,
+#custom-niri-workspaces,
 #window,
 #workspaces,
 #custom-l_end,
@@ -81,6 +82,33 @@ tooltip {
 #workspaces,
 #taskbar {
     padding: 0px;
+}
+
+/* Brukt av innebygd niri/workspaces, se kommentar i config.jsonc */
+/* #workspaces {
+    margin: 5px 10px 5px 0px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: @main-fg;
+    padding: 0px 6px;
+    margin: 2px;
+    border-radius: 6px;
+}
+
+#workspaces button.focused {
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+}
+
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+} */
+
+#custom-niri-workspaces {
+    margin: 5px 10px 5px 0px;
 }
 
 #custom-r_end {

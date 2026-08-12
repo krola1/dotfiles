@@ -13,6 +13,7 @@
         "cpu",
         "memory",
         "power-profiles-daemon",
+        "custom/niri-workspaces",
     ],
     "modules-center": [
         "clock",
@@ -25,6 +26,17 @@
         "tray",
     ],
     // Modules configuration
+    // "niri/workspaces": {
+    //     "format": "{value}"
+    // },
+    // Erstattet med custom/niri-workspaces: stash-workspacen tar bokstavelig
+    // talt over idx 1 når den er synlig (se scratchpad.kdl), så den innebygde
+    // modulen viser bare "stash" i stedet for "1". Scriptet lar den i stedet
+    // dekke hele modulen som et overlay-merke.
+    "custom/niri-workspaces": {
+        "exec": "$HOME/.config/waybar/niri-workspaces.sh",
+        "tooltip": false
+    },
     // "sway/workspaces": {
     //     "disable-scroll": true,
     //     "all-outputs": true,
