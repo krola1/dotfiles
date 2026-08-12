@@ -1,0 +1,11 @@
+spawn-at-startup "niri-scratchpad" "daemon"
+
+
+workspace "stash" {
+    hidden true    // bare på hidden-workspaces-branchen
+}
+
+binds {
+    Mod+S { spawn "niri-scratchpad" "create" "1"; }
+    Mod+Shift+S { spawn "niri-scratchpad" "delete" "1"; }
+}
