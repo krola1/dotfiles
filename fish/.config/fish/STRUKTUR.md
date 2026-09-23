@@ -30,6 +30,7 @@ fish/
     ├── dcd.fish             # Søk toppnivå-pakke i ~/dotfiles, cd inn i selve config-mappen (f.eks. .config/niri)
     ├── dcn.fish             # Søk config-fil i ~/dotfiles (uansett $PWD), åpne i nvim
     ├── mkcd.fish            # mkdir -p + cd i én kommando
+    ├── mkfile.fish          # touch + mkdir -p av foreldermapper + cd til mappen fila ligger i
     ├── rmcd.fish            # Slett nåværende mappe rekursivt, cd til foreldre
     ├── cdl.fish             # cd + ls -la
     ├── sc.fish              # ripgrep+fzf søk med forhåndsvisning i bat/nvim
